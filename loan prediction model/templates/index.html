@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Prediction App</title>
+    <!-- Add your stylesheets for styling -->
+    <link rel="stylesheet" href="static/style.css">
+    <!-- Placeholder for additional stylesheets (if needed) -->
+    <link rel="stylesheet" href="static/additional-styles.css">
+
+    <!-- Add your external libraries for animations (e.g., animate.css) -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css"> -->
+
+    <!-- Placeholder for additional scripts (if needed) -->
+    <!-- <script src="static/your-script.js"></script> -->
+
+
+    <style>
+        /* Add your custom styles here */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            padding: 20px;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 20px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #prediction-result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #ddd;
+            border-radius: 4px;
+        }
+
+        /* Add your custom animations here */
+        /* Example: */
+        /* .animated {
+            animation: fadeInUp 1s;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        } */
+    </style>
+</head>
+<body>
+
+        
+
+    
+
+    <h1 class="animated">Loan Prediction App</h1>
+
+    <form action="/predict" method="post" class="animated">
+        <label for="income">Income:</label>
+        <input type="number" id="income" name="income" required>
+
+           <label for="age">Age:</label>
+        <input type="number" id="age" name="age" required>
+
+        <label for="experience">Experience (Years):</label>
+        <input type="number" id="experience" name="experience" required>
+
+        <label for="married_single">Married/Single:</label>
+        <select id="married_single" name="married_single" required>
+	<option value="--Select--">--Select--</option>
+            <option value="Married">Married</option>
+            <option value="Single">Single</option>
+        </select>
+
+        <label for="house_ownership">House Ownership:</label>
+        <select id="house_ownership" name="house_ownership" required>
+<option value="--Select--">--Select--</option>
+            <option value="Owned">Owned</option>
+            <option value="Rented">Rented</option>
+            <option value="NoRent_NoOwn">No Rent/No Own</option>
+        </select>
+
+        <label for="car_ownership">Car Ownership:</label>
+        <select id="car_ownership" name="car_ownership" required>
+	<option value="--Select--">--Select--</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select>
+
+	<label for="profession">Profession:</label>
+        <select id="profession" name="profession" required>
+<option value="--Select--">--Select--</option>
+            <option value="Mechanical_engineer">Mechanical Engineer</option>
+            <option value="Software_Developer">Software Developer</option>
+            <option value="Technical_writer">Technical Writer</option>
+            <option value="Civil_servant">Civil Servant</option>
+            <option value="Librarian">Librarian</option>
+            <option value="Economist">Economist</option>
+            <option value="Flight_attendant">Flight Attendant</option>
+            <option value="Architect">Architect</option>
+            <option value="Designer">Designer</option>
+            <option value="Physician">Physician</option>
+            <option value="Financial_Analyst">Financial Analyst</option>
+            <option value="Air_traffic_controller">Air Traffic Controller</option>
+            <option value="Politician">Politician</option>
+            <option value="Police_officer">Police Officer</option>
+            <option value="Artist">Artist</option>
+            <option value="Surveyor">Surveyor</option>
+            <option value="Design_Engineer">Design Engineer</option>
+            <option value="Chemical_engineer">Chemical Engineer</option>
+            <option value="Hotel_Manager">Hotel Manager</option>
+            <option value="Dentist">Dentist</option>
+            <option value="Comedian">Comedian</option>
+            <option value="Biomedical_Engineer">Biomedical Engineer</option>
+            <option value="Graphic_Designer">Graphic Designer</option>
+            <option value="Computer_hardware_engineer">Computer Hardware Engineer</option>
+            <option value="Petroleum_Engineer">Petroleum Engineer</option>
+            <option value="Secretary">Secretary</option>
+            <option value="Computer_operator">Computer Operator</option>
+            <option value="Chartered_Accountant">Chartered Accountant</option>
+            <option value="Technician">Technician</option>
+            <option value="Microbiologist">Microbiologist</option>
+            <option value="Fashion_Designer">Fashion Designer</option>
+            <option value="Aviator">Aviator</option>
+            <option value="Psychologist">Psychologist</option>
+            <option value="Magistrate">Magistrate</option>
+            <option value="Lawyer">Lawyer</option>
+            <option value="Firefighter">Firefighter</option>
+            <option value="Engineer">Engineer</option>
+            <option value="Official">Official</option>
+            <option value="Analyst">Analyst</option>
+            <option value="Geologist">Geologist</option>
+            <option value="Drafter">Drafter</option>
+            <option value="Statistician">Statistician</option>
+            <option value="Web_designer">Web Designer</option>
+            <option value="Consultant">Consultant</option>
+            <option value="Chef">Chef</option>
+            <option value="Army_officer">Army Officer</option>
+            <option value="Surgeon">Surgeon</option>
+            <option value="Scientist">Scientist</option>
+            <option value="Civil_engineer">Civil Engineer</option>
+            <option value="Industrial_Engineer">Industrial Engineer</option>
+            <option value="Technology_specialist">Technology Specialist</option>
+            <!-- Add more options as needed -->
+        </select>
+
+        <label for="state">State:</label>
+        <select id="state" name="state" onchange="updateCities()" required>
+<option value="--Select--">--Select--</option>
+            <option value="Andhra_Pradesh">Andhra Pradesh</option>
+    <option value="Arunachal_Pradesh">Arunachal Pradesh</option>
+    <option value="Assam">Assam</option>
+    <option value="Bihar">Bihar</option>
+    <option value="Chhattisgarh">Chhattisgarh</option>
+    <option value="Goa">Goa</option>
+    <option value="Gujarat">Gujarat</option>
+    <option value="Haryana">Haryana</option>
+    <option value="Himachal_Pradesh">Himachal Pradesh</option>
+    <option value="Jharkhand">Jharkhand</option>
+    <option value="Karnataka">Karnataka</option>
+    <option value="Kerala">Kerala</option>
+    <option value="Madhya_Pradesh">Madhya Pradesh</option>
+    <option value="Maharashtra">Maharashtra</option>
+    <option value="Manipur">Manipur</option>
+    <option value="Meghalaya">Meghalaya</option>
+    <option value="Mizoram">Mizoram</option>
+    <option value="Nagaland">Nagaland</option>
+    <option value="Odisha">Odisha</option>
+    <option value="Punjab">Punjab</option>
+    <option value="Rajasthan">Rajasthan</option>
+    <option value="Sikkim">Sikkim</option>
+    <option value="Tamil_Nadu">Tamil Nadu</option>
+    <option value="Telangana">Telangana</option>
+    <option value="Tripura">Tripura</option>
+    <option value="Uttar_Pradesh">Uttar Pradesh</option>
+    <option value="Uttarakhand">Uttarakhand</option>
+    <option value="West_Bengal">West Bengal</option>
+    <option value="Andaman_and_Nicobar_Islands">Andaman and Nicobar Islands</option>
+    <option value="Chandigarh">Chandigarh</option>
+    <option value="Dadra_and_Nagar_Haveli_and_Daman_and_Diu">Dadra and Nagar Haveli and Daman and Diu</option>
+    <option value="Delhi">Delhi</option>
+    <option value="Lakshadweep">Lakshadweep</option>
+    <option value="Puducherry">Puducherry</option>
+    <!-- Add more options as needed -->
+        </select>
+
+        <label for="city">City:</label>
+        <select id="city" name="city" required>
+
+            <!-- Cities will be dynamically added here based on the selected state -->
+        </select>
+
+        <label for="current_job_yrs">Current Job (Years):</label>
+        <input type="number" id="current_job_yrs" name="current_job_yrs" required>
+
+        <label for="current_house_yrs">Current House (Years):</label>
+        <input type="number" id="current_house_yrs" name="current_house_yrs" required>
+
+        <button type="submit">Predict</button>
+    </form>
+
+    <div id="prediction-result" class="animated"></div>
+
+    <!-- Add your images and graphics here -->
+    <!-- Example: -->
+    <!-- <img src="static/your-image.jpg" alt="Loan Prediction" class="animated"> -->
+
+    <script src="static/script.js"></script>
+    <script>
+        // Your existing JavaScript code
+    </script>
+
+    <!-- Add your external scripts for animations (if needed) -->
+    <!-- Example: -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.js"></script> -->
+
+    <!-- Placeholder for additional scripts (if needed) -->
+    <!-- <script src="static/your-additional-script.js"></script> -->
+
+    <!-- Initialize city options on page load -->
+    <script>
+        // Define city options based on state
+        const cityOptions = {
+    'Madhya_Pradesh': ['Rewa', 'Jabalpur', 'Indore', 'Bhopal', 'Jalgaon', 'Gwalior', 'Shivpuri', 'Chhindwara', 'Katni'],
+    'Maharashtra': ['Mumbai', 'Pune', 'Nagpur', 'Nashik', 'Jalgaon', 'Solapur', 'Aurangabad', 'Bhiwandi', 'Amravati', 'Kolhapur', 'Latur'],
+    'Kerala': ['Alappuzha', 'Kollam', 'Kozhikode', 'Thiruvananthapuram', 'Erode'],
+    'Odisha': ['Bhubaneswar', 'Cuttack', 'Puri', 'Rourkela', 'Sambalpur'],
+    'Tamil_Nadu': ['Chennai', 'Coimbatore', 'Madurai', 'Tiruchirappalli', 'Erode', 'Thoothukudi', 'Salem'],
+    'Gujarat': ['Ahmedabad', 'Surat', 'Vadodara', 'Rajkot', 'Jamnagar', 'Bhavnagar', 'Gandhidham', 'Mehsana'],
+    'Rajasthan': ['Jaipur', 'Jodhpur', 'Udaipur', 'Kota', 'Bikaner', 'Sikar'],
+    'Telangana': ['Hyderabad', 'Warangal', 'Karimnagar', 'Nizamabad', 'Khammam', 'Suryapet'],
+    'Bihar': ['Patna', 'Gaya', 'Bhagalpur', 'Muzaffarpur', 'Hajipur', 'Darbhanga', 'Motihari', 'Purnia', 'Siwan', 'Chapra', 'Begusarai', 'Buxar'],
+    'Andhra_Pradesh': ['Vijayawada', 'Visakhapatnam', 'Guntur', 'Nellore', 'Tirupati', 'Kurnool', 'Anantapur', 'Nandyal'],
+    'West_Bengal': ['Kolkata', 'Howrah', 'Durgapur', 'Asansol', 'Kamarhati', 'Barrackpore', 'Siliguri', 'Bardhaman'],
+    'Haryana': ['Chandigarh', 'Faridabad', 'Gurgaon', 'Rohtak', 'Sonipat', 'Ambala', 'Panipat'],
+    'Puducherry': ['Puducherry'],
+    'Karnataka': ['Bangalore', 'Mysore', 'Hubli-Dharwad', 'Mangalore', 'Gulbarga', 'Belgaum'],
+    'Uttar_Pradesh': ['Lucknow', 'Kanpur', 'Agra', 'Varanasi', 'Meerut', 'Noida', 'Greater_Noida', 'Ghaziabad', 'Allahabad', 'Gorakhpur', 'Jhansi', 'Aligarh', 'Moradabad', 'Muzaffarnagar', 'Bareilly', 'Etawah', 'Raebareli', 'Shahjahanpur', 'Sultan_Pur_Majra'],
+    'Himachal_Pradesh': ['Shimla', 'Kullu', 'Manali', 'Dharamshala'],
+    'Punjab': ['Chandigarh', 'Ludhiana', 'Amritsar', 'Jalandhar', 'Patiala', 'Bathinda'],
+    'Tripura': ['Agartala'],
+    'Uttarakhand': ['Dehradun', 'Nainital', 'Haridwar', 'Rishikesh'],
+    'Jharkhand': ['Ranchi', 'Jamshedpur', 'Dhanbad', 'Bokaro', 'Hazaribagh'],
+    'Mizoram': ['Aizawl'],
+    'Assam': ['Guwahati', 'Silchar', 'Dibrugarh', 'Jorhat', 'Nagaon', 'Tezpur'],
+    'Jammu_and_Kashmir': ['Srinagar', 'Jammu', 'Udhampur', 'Anantnag'],
+    'Delhi': ['New_Delhi', 'South_Delhi', 'North_Delhi', 'West_Delhi', 'North_Dumdum', 'South_Dumdum', 'Naihati', 'Panihati', 'Bally'],
+    'Chhattisgarh': ['Raipur', 'Bhilai', 'Bilaspur', 'Korba', 'Durg'],
+    'Chandigarh': ['Chandigarh'],
+    'Uttar_Pradesh[5]': ['Noida', 'Greater_Noida', 'Ghaziabad', 'Meerut', 'Khora,_Ghaziabad', 'Kirari_Suleman_Nagar', 'Kolkata', 'Bally', 'Howrah', 'Baranagar', 'Bidhannagar', 'North_Dumdum', 'South_Dumdum', 'Naihati', 'Panihati'],
+    'Manipur': ['Imphal'],
+    'Sikkim': ['Gangtok'],
+    // Add more options as needed
+};
+
+
+        // Function to update city options based on the selected state
+        function updateCities() {
+            const stateSelect = document.getElementById('state');
+            const citySelect = document.getElementById('city');
+            const selectedState = stateSelect.value;
+
+            // Clear existing options
+            citySelect.innerHTML = '';
+
+            // Add new options based on the selected state
+            if (cityOptions.hasOwnProperty(selectedState)) {
+                const cities = cityOptions[selectedState];
+                cities.forEach(city => {
+                    const option = document.createElement('option');
+                    option.value = city;
+                    option.textContent = city;
+                    citySelect.appendChild(option);
+                });
+            }
+        }
+
+        // Initialize city options on page load
+        updateCities();
+    </script>
+
+</body>
+</html>
